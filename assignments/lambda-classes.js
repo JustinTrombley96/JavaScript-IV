@@ -30,27 +30,33 @@ class Instructors extends Person {
         this.faveLanguage = attr.faveLanguage;
         this.catchPhrase = attr.catchPhrase;
     }
-    demo() {
+    demo(subject) {
         return `Today we are learning about ${subject}.`
     }
-    grade() {
+    grade(student, subject) {
         return `${student.name} receives a perfect score on ${subject}.`
     }
 }
 const dan = new Instructors({
     speciality: 'cats',
     faveLanguage: 'html',
-    catchPhrase: 'I need closure unlike my divorce'
+    catchPhrase: 'I need closure unlike my divorce',
+    name: 'Dan',
+    age: 43,
+    location: 'LA'
 })
 const jay = new Instructors({
     speciality: 'pm',
     faveLanguage: 'react',
-    catchPhrase: 'Insert catchphrase here'
+    catchPhrase: 'Insert catchphrase here',
+    name: 'Jay',
+    age: 19,
+    location: 'South Tier'
 })
-// console.log(dan.demo());
-//console.log(dan.grade());
-// console.log(jay.demo());
-//console.log(jay.grade());
+console.log(dan.demo("javascript"));
+console.log(dan.grade(jose, 'javascript'));
+console.log(jay.demo("CSS"));
+console.log(jay.grade(justin, 'javascript'));
 class Students extends Person {
     constructor(attr) {
         super(attr);
@@ -59,31 +65,37 @@ class Students extends Person {
         this.favSubjects = attr.favSubjects;
     }
     listsSubjects() {
-        return ``
+        return `${this.favSubjects}`
     }
-    PRAssignment() {
+    PRAssignment(student, subject) {
         return `${student.name} has submitted a PR for ${subject}.`
     }
-    sprintChallenge() {
+    sprintChallenge(student, subject) {
         return `${student.name} has begun sprint challenge on ${subject}.`
     }
 }
 const luis = new Students({
     previousBackground: 'construction',
     className: 'concussion 101',
-    favSubjects: 'Virgil'
+    favSubjects: ['javascript', ' html', ' css'],
+    name: 'Luis',
+    age: 39,
+    location: 'Chicago'
 })
 const jason = new Students({
     previousBackground: 'political advisor',
     className: 'politics',
-    favSubjects: 'political science'
+    favSubjects: ['javascript', 'html', 'css'],
+    name: 'Jason',
+    age: 41,
+    location: 'Maine'
 })
-// console.log(luis.listsSubjects());
-// console.log(luis.PRAssignment());
-// console.log(luis.sprintChallenge());
-// console.log(jason.listsSubjects());
-// console.log(jason.PRAssignment());
-// console.log(jason.sprintChallenge());
+console.log(luis.listsSubjects());
+console.log(luis.PRAssignment(luis, 'javascript'));
+console.log(luis.sprintChallenge(luis, 'javascript'));
+console.log(jason.listsSubjects());
+console.log(jason.PRAssignment(jason, 'javascript'));
+console.log(jason.sprintChallenge(jason, 'javascript'));
 
 
 class ProjectManagers extends Instructors {
@@ -92,24 +104,34 @@ class ProjectManagers extends Instructors {
         this.gradClassName = attr.gradClassName;
         this.favInstructor = attr.favInstructor;
     }
-    standup() {
-        return `${name} announces to ${channel}, @channel standy times!`
+    standup(name, channel) {
+        return `${name} announces to ${channel}, standup times!`
     }
-    debugsCode() {
-        return `${name} debugs ${student.name}'s code on ${subject}.`
+    debugsCode(name, studentName, subject) {
+        return `${name} debugs ${studentName}'s code on ${subject}.`
     }
 }
 const wes = new ProjectManagers({
-    previousBackground: 'english teacher',
-    className: 'intro to horror',
-    favSubjects: 'film'
+    speciality: 'pm',
+    faveLanguage: 'css',
+    catchPhrase: 'Bam',
+    name: 'Wes',
+    age: 37,
+    location: 'South Belt',
+    gradClassName: 'Web 12',
+    favInstructor: 'Dan'
 })
 const pete = new ProjectManagers({
-    previousBackground: 'journalist',
-    className: 'journalism 101',
-    favSubjects: 'journalism'
+    speciality: 'pm',
+    faveLanguage: 'react',
+    catchPhrase: 'Catch this',
+    name: 'Pete',
+    age: 45,
+    location: 'Southern Wedge',
+    gradClassName: 'Web 10',
+    favInstructor: 'Jay'
 })
-// console.log(wes.standup());
-// console.log(wes.debugsCode());
-// console.log(pete.standup());
-// console.log(pete.debugsCode());
+console.log(wes.standup('Wes', 'PM_Wes'));
+console.log(wes.debugsCode('Wes', 'luis', 'javascript'));
+console.log(pete.standup('Pete', 'PM_Pete'));
+console.log(pete.debugsCode('Pete', 'Luis', 'English'));
